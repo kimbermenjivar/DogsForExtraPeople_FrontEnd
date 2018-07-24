@@ -13,7 +13,7 @@ The object returned can be used to validate the form data.
 'use strict'
 
 const ajaxDefaults = {
-  url: 'http://localhost:4741'
+  url: 'http://localhost:7165'
 }
 
 const myRequest = (data) => {

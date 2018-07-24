@@ -11,7 +11,26 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
-</html>
+    <div class="container">
+      <form id="sign-up" class="border">
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <input type="submit" value="Sign up!">
+      </form>
+      <form id="sign-in" class="border">
+
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="submit" value="Sign in!">
+      </form>
+      <form id="change-password" class="hidden">
+                 <input type="password" name="passwords[old_password]" placeholder="Old Password">
+        <input type="password" name="passwords[new_password]" placeholder="New Password">
+        <input type="submit" value="Change Password">
+
+      </form>
+      <form id="sign-out" class="hidden">
+                 <input type="submit" value="Sign Out">
+
+      </form>
