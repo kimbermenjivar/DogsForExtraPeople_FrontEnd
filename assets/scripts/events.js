@@ -14,6 +14,7 @@ const onSignUp = function (event) {
 }
 
 const onSignIn = function (event) {
+  console.log(event)
   event.preventDefault()
   const data = getFormFields(this) // this === event.target
   api.signIn(data)
@@ -33,7 +34,7 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('Sign put ran!')
+  console.log('Sign out ran!')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -47,5 +48,3 @@ const addHandlers = () => {
 module.exports = {
   addHandlers
 }
-exports.console = console
-exports.console = console
