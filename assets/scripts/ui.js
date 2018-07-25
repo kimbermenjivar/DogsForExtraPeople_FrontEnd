@@ -19,6 +19,9 @@ const signInSuccess = function (data) {
   $('#message').css('background-color', 'green')
   $('#sign-out').removeClass('hidden')
   $('#change-password').removeClass('hidden')
+  $('#add-dog').removeClass('hidden')
+  $('#search-dog').removeClass('hidden')
+  $('#search-for-dog').removeClass('hidden')
   $('#sign-in').addClass('hidden')
   $('#sign-up').addClass('hidden')
   console.log('signInSuccessful ran. Data is:', data)
@@ -48,12 +51,41 @@ const signOutSuccess = function (data) {
   $('#change-password').addClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('#sign-in').removeClass('hidden')
+  $('#add-dog').removeClass('hidden')
+  $('#search-for-dog').removeClass('hidden')
   store.user = null
 }
 const signOutFailure = function (error) {
   $('#message').text('Error on sign Out')
   $('#message').css('background-color', 'red')
   console.log('signOutFailure ran. Data is:', error)
+}
+const addDogSuccess = function (data) {
+  $('#message').text('Add dog')
+  $('#message').css('background-color', 'green')
+  $('#signOut').addClass('hidden')
+  $('#change-password').addClass('hidden')
+  $('#add-dog').removeClass('hidden')
+  $('#search-for-dog').removeClass('hidden')
+  $('#sign-out').removeClass('hidden')
+  $('#sign-in').removeClass('hidden')
+}
+const searchForDogsSuccess = function (data) {
+  $('.search-results').html('')
+  data.dogs.forEach((dog) => {
+    const searchHTML = (`\
+    <div>
+    <h1>Breed: ${dog.breed}</h1>\
+    <h1>Size: ${dog.size}</h1>\
+    <h1>Fur: ${dog.fur}</h1>\
+    </div>
+    `)
+    $('.search-results').append(searchHTML)
+  })
+}
+
+const addDogsFailure = function (error) {
+  console.log(error)
 }
 
 module.exports = {
@@ -62,7 +94,10 @@ module.exports = {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure,
+  signOutFailure, 
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  addDogSuccess,
+  addDogsFailure,
+  searchForDogsSuccess
 }

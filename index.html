@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <div class="container">
-      <form id="sign-up" class="border">
-        <input type="text" name="credentials[email]" placeholder="Email">
-        <input type="password" name="credentials[password]" placeholder="Password">
-        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-        <input type="submit" value="Sign up!">
-      </form>
-      <form id="sign-in" class="border">
-        <input type="text" name="credentials[email]" placeholder="Email">
-        <input type="password" name="credentials[password]" placeholder="Password">
-        <input type="submit" value="Sign in!">
-      </form>
-      <form id="change-password" class="hidden">
-        <input type="password" name="passwords[old_password]" placeholder="Old Password">
-        <input type="password" name="passwords[new_password]" placeholder="New Password">
-        <input type="submit" value="Change Password">
-      </form>
-      <form id="sign-out" class="hidden">
-                 <input type="submit" value="Sign Out">
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      </form>
-      </div>
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <form id="sign-up" class="border">
+    <input type="text" name="credentials[email]" placeholder="Email">
+    <input type="password" name="credentials[password]" placeholder="Password">
+    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+    <input type="submit" value="Sign up!">
+  </form>
+  <form id="sign-in" class="border">
+    <input type="text" name="credentials[email]" placeholder="Email">
+    <input type="password" name="credentials[password]" placeholder="Password">
+    <input type="submit" value="Sign in!">
+  </form>
+  <form id="change-password" class="hidden">
+    <input type="password" name="old password=" Old Password ">
+    <input type="password " name="new password="New Password">
+    <input type="submit" value="Change Password">
+  </form>
+
+  <form id="add-dog" class="hidden">
+    <input type="text" name="dog[breed]" placeholder="Breed">
+    <input type="text" name="dog[size]" placeholder="Size">
+    <input type="text" name="dog[fur]" placeholder="Fur">
+    <input type="submit" value="Add Dog">
+
+  </form>
+
+  <button id="search-for-dog" type="button" class="hidden">Search For Dogs</button>
+
+  <form id="sign-out" class="hidden">
+    <input type="submit" value="Sign Out">
+  </form>
+
+  <div class="search-results"></div>
+  </div>
+</body>
+
+</html>

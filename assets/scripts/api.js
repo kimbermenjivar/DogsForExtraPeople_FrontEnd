@@ -1,16 +1,11 @@
 'use strict'
 
-import {
-  apiUrl
-} from './config'
-import {
-  user
-} from './store'
+const config = require('./config')
+const store = require('./store')
 
 const signUp = function (data) {
-  console.log(apiUrl + '/sign-up')
   return $.ajax({
-    url: apiUrl + '/sign-up',
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
     data
   })
@@ -18,7 +13,7 @@ const signUp = function (data) {
 
 const signIn = function (data) {
   return $.ajax({
-    url: apiUrl + '/sign-in',
+    url: config.apiUrl + '/sign-in',
     method: 'POST',
     data
   })
@@ -27,27 +22,51 @@ const signIn = function (data) {
 const changePassword = function (data) {
   console.log('data is ', data)
   return $.ajax({
-    url: apiUrl + '/change-password',
+    url: config.apiUrl + '/change-password',
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + user.token
-    }
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
   })
 }
 
 const signOut = function () {
   return $.ajax({
-    url: apiUrl + '/sign-out',
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + user.token
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
 
+const addDog = function (data) {
+  console.log('data is ', data)
+  return $.ajax({
+    url: config.apiUrl + '/dogs',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+const searchForDog = function () {
+  return $.ajax({
+    url: config.apiUrl + '/dogs',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+
+  })
+}
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  addDog,
+  searchForDog
 }
