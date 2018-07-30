@@ -6,6 +6,7 @@ const signUpSuccess = function (data) {
   $('#message').text('Signed up successfully')
   $('#message').css('background-color', 'green')
   console.log('signUpSuccess ran. Data is:', data)
+  $('#sign-up').addClass('hidden')
   store.user = data.user
 }
 const signUpFailure = function (error) {
@@ -45,14 +46,15 @@ const changePasswordFailure = function (error) {
   console.log('startFailure ran. Data is:', error)
 }
 const signOutSuccess = function (data) {
+  console.log('ha')
   $('#message').text('Signed out successfully')
   $('#message').css('background-color', 'green')
-  $('#signOut').addClass('hidden')
+  $('#sign-out').addClass('hidden')
   $('#change-password').addClass('hidden')
-  $('#sign-out').removeClass('hidden')
   $('#sign-in').removeClass('hidden')
-  $('#add-dog').removeClass('hidden')
-  $('#search-for-dog').removeClass('hidden')
+  $('#sign-up').removeClass('hidden')
+  $('#add-dog').addClass('hidden')
+  $('#search-for-dog').addClass('hidden')
   store.user = null
 }
 const signOutFailure = function (error) {
@@ -66,23 +68,24 @@ const addDogSuccess = function (data) {
   $('#signOut').addClass('hidden')
   $('#change-password').addClass('hidden')
   $('#add-dog').removeClass('hidden')
-  $('#search-for-dog').removeClass('hidden')
+  $('#search-for-dogs').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('#sign-in').removeClass('hidden')
 }
 const searchForDogsSuccess = function (data) {
   $('.search-results').html('')
   data.dogs.forEach((dog) => {
-    const searchHTML = (`\
-    <div>
-    <h1>Breed: ${dog.breed}</h1>\
-    <h1>Size: ${dog.size}</h1>\
-    <h1>Fur: ${dog.fur}</h1>\
-    </div>
-    `)
-    $('.search-results').append(searchHTML)
-  })
-}
+    const searchHTML = ('')
+  <div>
+  <h1>Breed: ${dog.breed}</h1>
+  <h1>Size: ${dog.size}</h1>
+  <h1>Fur: ${dog.fur}</h1>
+  </div>
+  $('.search-results').append('searchHTML')
+
+
+
+
 
 const addDogsFailure = function (error) {
   console.log(error)
@@ -94,10 +97,10 @@ module.exports = {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure, 
+  signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
   addDogSuccess,
-  addDogsFailure,
-  searchForDogsSuccess
+  addDogFailure,
+  searchForDogsSuccess,
 }
