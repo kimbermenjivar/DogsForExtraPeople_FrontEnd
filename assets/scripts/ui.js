@@ -55,6 +55,7 @@ const signOutSuccess = function (data) {
   $('#sign-up').removeClass('hidden')
   $('#add-dog').addClass('hidden')
   $('#search-for-dog').addClass('hidden')
+  $('.search-results').html('')
   store.user = null
 }
 const signOutFailure = function (error) {
@@ -74,18 +75,16 @@ const addDogSuccess = function (data) {
 }
 const searchForDogsSuccess = function (data) {
   $('.search-results').html('')
+  let searchHTML = ''
   data.dogs.forEach((dog) => {
-    const searchHTML = ('')
-  <div>
-  <h1>Breed: ${dog.breed}</h1>
-  <h1>Size: ${dog.size}</h1>
-  <h1>Fur: ${dog.fur}</h1>
-  </div>
-  $('.search-results').append('searchHTML')
-
-
-
-
+    searchHTML += `<div>
+    <h1>Breed: ${dog.breed}</h1>
+    <h1>Size: ${dog.size}</h1>
+    <h1>Fur: ${dog.fur}</h1>
+    </div>`
+  })
+  $('.search-results').append(searchHTML)
+}
 
 const addDogsFailure = function (error) {
   console.log(error)
@@ -101,6 +100,6 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   addDogSuccess,
-  addDogFailure,
-  searchForDogsSuccess,
+  addDogsFailure,
+  searchForDogsSuccess
 }
