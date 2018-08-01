@@ -41,7 +41,7 @@ const signOut = function () {
   })
 }
 
-const addDog = function (data) {
+const addDogs = function (data) {
   console.log('data is ', data)
   return $.ajax({
     url: config.apiUrl + '/dogs',
@@ -52,14 +52,25 @@ const addDog = function (data) {
     data
   })
 }
-const searchForDog = function () {
+const deleteDogs = function (data) {
+  console.log('data is ', data)
+
+  return $.ajax({
+    url: config.apiUrl + '/dogs',
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+const searchForDogs = function () {
   return $.ajax({
     url: config.apiUrl + '/dogs',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
-
   })
 }
 module.exports = {
@@ -67,6 +78,7 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  addDog,
-  searchForDog
+  addDogs,
+  deleteDogs,
+  searchForDogs
 }

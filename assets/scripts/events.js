@@ -38,27 +38,37 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-const onAddDog = function (event) {
+const onAddDogs = function (event) {
   event.preventDefault()
   const data = getFormFields(this) // this === event.target
-  api.addDog(data)
+  api.addDogs(data)
     .then(ui.addDogSuccess)
     .catch(ui.addDogsFailure)
 }
-const onSearchForDog = function (event) {
+
+const onDeleteDogs = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this) // this === event.target
+  api.deleteDog(data)
+    .then(ui.deleteDogSuccess)
+    .catch(ui.deleteDogFailure)
+}
+
+const onSearchForDogs = function (event) {
   event.preventDefault()
   console.log('Search for Dog ran!')
-  api.searchForDog()
-    .then(ui.searchForDogsSuccess )
-    .catch(ui.searchForDogFailure)
+  api.searchForDogs()
+    .then(ui.searchForDogsSuccess)
+    .catch(ui.searchForDogsFailure)
 }
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#add-dog').on('submit', onAddDog)
-  $('.container').on('click', "button[id^='search-for-dog']", onSearchForDog)
+  $('#add-dog').on('submit', onAddDogs)
+  $('#delete-dog').on('submit', onDeleteDogs)
+  $('.container').on('click', "button[id^='search-for-dog']", onSearchForDogs)
 }
 module.exports = {
   addHandlers
