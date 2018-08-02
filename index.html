@@ -29,6 +29,7 @@
     <input type="password" name="credentials[password]" placeholder="Password">
     <input type="submit" value="Sign in!">
   </form>
+
   <form id="change-password" class="hidden">
     <input type="password" name="passwords[old]">
     <input type="password" name="passwords[new]">
@@ -42,16 +43,16 @@
     <input type="submit" value="Add Dog">
 
   </form>
-  <form id="delete-dog" class="hidden">
-    <input type="text" name="dog[breed]" placeholder="Breed">
-    <input type="text" name="dog[size]" placeholder="Size">
-    <input type="text" name="dog[fur]" placeholder="Fur">
-    <input type="submit" value="Delete Dog">
-
+  <form id="search-for-dogs" class="hidden">
+    <input type="submit" name="dog[id]" value="Search For Dogs">
   </form>
 
-  <button id="search-for-dog" type="button" class="hidden">Search For Dogs</button>
 
+  <form id="delete-dog" class="hidden">
+    <input type="text" name="dog[id]" placeholder="id">
+    <input type="submit" value="Delete A Dog">
+
+  </form>
   <form id="sign-out" class="hidden">
     <input type="submit" value="Sign Out">
   </form>

@@ -52,21 +52,20 @@ const addDogs = function (data) {
     data
   })
 }
-const deleteDogs = function (data) {
+const deleteDog = function (data) {
   console.log('data is ', data)
 
   return $.ajax({
-    url: config.apiUrl + '/dogs',
+    url: config.apiUrl + '/dogs/' + data.dog.id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data
+    }
   })
 }
 const searchForDogs = function () {
   return $.ajax({
-    url: config.apiUrl + '/dogs',
+    url: config.apiUrl + '/dogs/',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -79,6 +78,6 @@ module.exports = {
   changePassword,
   signOut,
   addDogs,
-  deleteDogs,
+  deleteDog,
   searchForDogs
 }

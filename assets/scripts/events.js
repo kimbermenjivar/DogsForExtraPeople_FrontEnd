@@ -30,7 +30,6 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
-
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Sign out ran!')
@@ -68,7 +67,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
   $('#add-dog').on('submit', onAddDogs)
   $('#delete-dog').on('submit', onDeleteDogs)
-  $('.container').on('click', "button[id^='search-for-dog']", onSearchForDogs)
+  $('#search-for-dogs').on('submit', onSearchForDogs)
 }
 module.exports = {
   addHandlers

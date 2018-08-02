@@ -21,8 +21,8 @@ const signInSuccess = function (data) {
   $('#sign-out').removeClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#add-dog').removeClass('hidden')
-  $('#search-dog').removeClass('hidden')
-  $('#search-for-dog').removeClass('hidden')
+  $('#delete-dog').removeClass('hidden')
+  $('#search-for-dogs').removeClass('hidden')
   $('#sign-in').addClass('hidden')
   $('#sign-up').addClass('hidden')
   console.log('signInSuccessful ran. Data is:', data)
@@ -54,7 +54,7 @@ const signOutSuccess = function (data) {
   $('#sign-in').removeClass('hidden')
   $('#sign-up').removeClass('hidden')
   $('#add-dog').addClass('hidden')
-  $('#search-for-dog').addClass('hidden')
+  $('#search-for-dogs').addClass('hidden')
   $('.search-results').html('')
   store.user = null
 }
@@ -69,6 +69,17 @@ const addDogsSuccess = function (data) {
   $('#signOut').addClass('hidden')
   $('#change-password').addClass('hidden')
   $('#add-dog').removeClass('hidden')
+  // $('#search-for-dog').removeClass('hidden')
+  $('#sign-out').removeClass('hidden')
+  $('#sign-in').removeClass('hidden')
+
+}
+const updateDogsSuccess = function (data) {
+  $('#message').text('Updated dog')
+  $('#message').css('background-color', 'green')
+  $('#signOut').addClass('hidden')
+  $('#change-password').addClass('hidden')
+  $('#add-dog').removeClass('hidden')
   $('#search-for-dog').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('#sign-in').removeClass('hidden')
@@ -78,24 +89,34 @@ const searchForDogsSuccess = function (data) {
   let searchHTML = ''
   data.dogs.forEach((dog) => {
     searchHTML += `<div>
-    <h1>Breed: ${dog.breed}</h1>
-    <h1>Size: ${dog.size}</h1>
-    <h1>Fur: ${dog.fur}</h1>
+    <h6>Breed: ${dog.breed}</h6>
+    <h6>Size: ${dog.size}</h6>
+    <h6>Fur: ${dog.fur}</h6>
+    <h6>id${dog.id}</h6>
     </div>`
   })
   $('.search-results').append(searchHTML)
 }
-const deleteDogsSuccess = function (data) {
-  $('.search-results').html('')
+
+// const updateDogSuccess = function (data) {
+//   return $.ajax({
+//     url: config.apiupdateDogs + '/dogs/' + data.dogs,
+//     method: 'PATCH',
+//     data
+//   })
+// }
+const deleteDogSuccess = function (data) {
+  $('.delete-results').html('')
   let searchHTML = ''
   data.dogs.forEach((dog) => {
     searchHTML += `<div>
-    <h1>Breed: ${dog.breed}</h1>
-    <h1>Size: ${dog.size}</h1>
-    <h1>Fur: ${dog.fur}</h1>
+    <h6>Breed: ${dog.breed}</h6>
+    <h6>Size: ${dog.size}</h6>
+    <h6>Fur: ${dog.fur}</h6>
+    <h6>${dog.id}</h6>
     </div>`
   })
-  $('.search-results').append(searchHTML)
+  $('.delete-results').append(searchHTML)
 }
 
 const addDogsFailure = function (error) {
@@ -114,5 +135,6 @@ module.exports = {
   addDogsSuccess,
   addDogsFailure,
   searchForDogsSuccess,
-  deleteDogsSuccess
+  deleteDogSuccess,
+  updateDogsSuccess
 }
