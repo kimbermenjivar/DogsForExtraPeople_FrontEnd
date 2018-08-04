@@ -54,6 +54,7 @@ const signOutSuccess = function (data) {
   $('#sign-in').removeClass('hidden')
   $('#sign-up').removeClass('hidden')
   $('#add-dog').addClass('hidden')
+  $('#delete-dog').addClass('hidden')
   $('#search-for-dogs').addClass('hidden')
   $('.search-results').html('')
   store.user = null

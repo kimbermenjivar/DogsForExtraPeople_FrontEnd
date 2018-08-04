@@ -68,6 +68,7 @@ const addHandlers = () => {
   $('#add-dog').on('submit', onAddDogs)
   $('#delete-dog').on('submit', onDeleteDogs)
   $('#search-for-dogs').on('submit', onSearchForDogs)
+  $('#form')[0].reset()
 }
 module.exports = {
   addHandlers
