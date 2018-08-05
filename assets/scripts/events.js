@@ -3,7 +3,9 @@
 const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
-
+const clearTMP = () => {
+  $('.search-results').children('div').remove()
+}
 const onSignUp = function (event) {
   console.log('trying to sign up')
   event.preventDefault()
@@ -23,13 +25,19 @@ const onSignIn = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('Change Password ran!')
+  // console.log('Change Password ran!')
 
-  const data = getFormFields(this) // this === event.target
+  const data = getFormFields(event.target) // this === event.target
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+  // console.log(data)
 }
+
+const showChangePassword = function () {
+  $('#change-password-form').removeClass('hidden')
+}
+
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Sign out ran!')
@@ -37,12 +45,19 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-const onAddDogs = function (event) {
+const onAddDog = function (event) {
   event.preventDefault()
   const data = getFormFields(this) // this === event.target
   api.addDogs(data)
     .then(ui.addDogSuccess)
     .catch(ui.addDogsFailure)
+}
+const onUpdateDog = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.updateDog(data)
+    .then(ui.updateDogSuccess)
+    .catch(ui.updateDogFailure)
 }
 
 const onDeleteDogs = function (event) {
@@ -54,6 +69,7 @@ const onDeleteDogs = function (event) {
 }
 
 const onSearchForDogs = function (event) {
+  clearTMP()
   event.preventDefault()
   console.log('Search for Dog ran!')
   api.searchForDogs()
@@ -63,13 +79,15 @@ const onSearchForDogs = function (event) {
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', onSignOut)
-  $('#add-dog').on('submit', onAddDogs)
+  $('#change-password-form').on('submit', onChangePassword)
+  $('#show-change-password').on('click', showChangePassword)
+  $('#sign-out').on('click', onSignOut)
+  $('#add-dog').on('submit', onAddDog)
   $('#delete-dog').on('submit', onDeleteDogs)
   $('#search-for-dogs').on('submit', onSearchForDogs)
-  $('#form')[0].reset()
+  $('#update-dog-form').on('submit', onUpdateDog)
 }
+
 module.exports = {
   addHandlers
 }

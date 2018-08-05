@@ -1,6 +1,7 @@
 'use strict'
 
-const store = {
+const store = { user: Object(),
+  dogs: []
 }
 
 module.exports = store

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Example</title>
+  <title>Dogs For Extra People</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Do not add `link` tags-->
@@ -15,50 +15,92 @@
 
 <body>
   <body background="https://previews.123rf.com/images/damedeeso/damedeeso1401/damedeeso140100005/25125611-diva-dog-shopping-like-a-pro-holding-a-bunch-of-bags.jpg"></body>
+  <nav class="navbar navbar-default hidden" id="navbar">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+
+                <li><a id="show-change-password" href="#">Change Password</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a id="sign-out" href="#">Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
   <div class="container">
+    <div id="message"></div>
+  <div class="auth">
+    <h1>Sign Up</h1>
     <form id="sign-up" class="border">
-    <input type="text" name="credentials[email]" placeholder="Email">
-    <input type="password" name="credentials[password]" placeholder="Password">
-    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-    <input type="submit" value="Sign up!">
-  </form>
-  <form id="sign-in" class="border">
-    <input type="text" name="credentials[email]" placeholder="Email">
-    <input type="password" name="credentials[password]" placeholder="Password">
-    <input type="submit" value="Sign in!">
-  </form>
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <BR>
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <BR>
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <BR>
+      <input type="submit" value="Sign up!">
+    </form>
+    <BR>
+      <h1>Sign In</h1>
+    <form id="sign-in" class="border">
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="submit" value="Sign in!">
+    </form>
+  </div>
 
-  <form id="change-password" class="hidden">
-    <input type="password" name="passwords[old]">
-    <input type="password" name="passwords[new]">
+<div class="hidden" id="change-password-form">
+  <form>
+    <input type="password" name="passwords[old]" placeholder="Current Password" required>
+    <input type="password" name="passwords[new]" placeholder="New Password" required>
     <input type="submit" value="Change Password">
   </form>
+</div>
 
   <form id="add-dog" class="hidden">
     <input type="text" name="dog[breed]" placeholder="Breed">
     <input type="text" name="dog[size]" placeholder="Size">
     <input type="text" name="dog[fur]" placeholder="Fur">
     <input type="submit" value="Add Dog">
-
   </form>
+
   <form id="search-for-dogs" class="hidden">
     <input type="submit" name="dog[id]" value="Search For Dogs">
   </form>
 
+  <form  class='hidden' id='update-dog-form'>
+    <input type="text" name="dog[id]" placeholder="Dog Id" required><br>
+    <input type="text" name="dog[breed]" placeholder="Dog Breed" required><br>
+    <input type="text" name="dog[size]" placeholder="Dog Size" required><br>
+    <input type="text" name="dog[fur]" placeholder="Dog Fur" required><br>
+    <input type="submit" value="Update Dog">
+  </form>
 
   <form id="delete-dog" class="hidden">
     <input type="text" name="dog[id]" placeholder="id">
     <input type="submit" value="Delete A Dog">
-
-  </form>
-  <form id="sign-out" class="hidden">
-    <input type="submit" value="Sign Out">
   </form>
 
   <div class="search-results"></div>
-  </div>
-</body>
 
+</body>
   </html>

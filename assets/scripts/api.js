@@ -20,7 +20,7 @@ const signIn = function (data) {
 }
 
 const changePassword = function (data) {
-  console.log('data is ', data)
+  // console.log('data is ', data)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -72,6 +72,16 @@ const searchForDogs = function () {
     }
   })
 }
+const updateDog = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/dogs/' + data.dog.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 module.exports = {
   signUp,
   signIn,
@@ -79,5 +89,6 @@ module.exports = {
   signOut,
   addDogs,
   deleteDog,
-  searchForDogs
+  searchForDogs,
+  updateDog
 }
