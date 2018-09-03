@@ -113,9 +113,15 @@ const deleteDogSuccess = function (data) {
   $('#message').css('background-color', 'green')
   $('#delete-dog')[0].reset()
 }
+
+const deleteDogFailure = () => {
+  $('#message').text('This is not your DOG!')
+  $('#message').css('background-color', 'red')
+}
+
 const addDogsFailure = function () {
-    $('#message').text('Something went wrong.')
-    $('#message').css('background-color', 'red')
+  $('#message').text('Something went wrong.')
+  $('#message').css('background-color', 'red')
 }
 
 module.exports = {
@@ -131,6 +137,7 @@ module.exports = {
   addDogsFailure,
   searchForDogsSuccess,
   deleteDogSuccess,
+  deleteDogFailure,
   updateDogSuccess,
   updateDogFailure
 }
