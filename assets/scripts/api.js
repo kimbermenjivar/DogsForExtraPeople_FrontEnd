@@ -10,11 +10,13 @@ const signUp = function (data) {
     data
   })
 }
-
 const signIn = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data
   })
 }
@@ -42,7 +44,7 @@ const signOut = function () {
 }
 
 const addDogs = function (data) {
-  console.log('data is ', data)
+//   console.log('data is ', data)
   return $.ajax({
     url: config.apiUrl + '/dogs',
     method: 'POST',
@@ -53,7 +55,7 @@ const addDogs = function (data) {
   })
 }
 const deleteDog = function (data) {
-  console.log('data is ', data)
+//   console.log('data is ', data)
 
   return $.ajax({
     url: config.apiUrl + '/dogs/' + data.dog.id,

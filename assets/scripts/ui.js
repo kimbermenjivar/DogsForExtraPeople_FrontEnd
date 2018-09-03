@@ -1,18 +1,18 @@
-'use strict'
 
+'use strict'
 const store = require('./store')
 
 const signUpSuccess = function (data) {
   $('#message').text('Signed up successfully')
   $('#message').css('background-color', 'green')
-  console.log('signUpSuccess ran. Data is:', data)
+//   console.log('signUpSuccess ran. Data is:', data)
   $('#sign-up').addClass('hidden')
   store.user = data.user
 }
-const signUpFailure = function (error) {
+const signUpFailure = function () {
   $('#message').text('Error on sign')
   $('#message').css('background-color', 'red')
-  console.log('signUpFailure ran. Data is:', error)
+//   console.log('signUpFailure ran. Data is:', error)
 }
 
 const signInSuccess = function (data) {
@@ -32,12 +32,12 @@ const signInSuccess = function (data) {
   store.user = data.user
 }
 
-const signInFailure = function (error) {
+const signInFailure = function () {
   $('#message').text('Error on sign in')
   $('#message').css('background-color', 'red')
-  console.log('signInFailure ran. Data is:', error)
+//   console.log('signInFailure ran. Data is:', error)
 }
-const changePasswordSuccess = function (data) {
+const changePasswordSuccess = function () {
   $('#message').text('changed password successfully')
   $('#message').css('background-color', 'green')
   // console.log('password changed successfully')
@@ -48,8 +48,8 @@ const changePasswordFailure = function () {
   $('#message').css('background-color', 'red')
   // console.log('startFailure ran. Data is:', error)
 }
-const signOutSuccess = function (data) {
-  console.log('ha')
+const signOutSuccess = function () {
+//   console.log('ha')
   $('#message').text('Signed out successfully')
   $('#message').css('background-color', 'green')
   $('#sign-out').addClass('hidden')
@@ -64,12 +64,12 @@ const signOutSuccess = function (data) {
   $('.search-results').html('')
   store.user = null
 }
-const signOutFailure = function (error) {
+const signOutFailure = function () {
   $('#message').text('Error on sign Out')
   $('#message').css('background-color', 'red')
-  console.log('signOutFailure ran. Data is:', error)
+//   console.log('signOutFailure ran. Data is:', error)
 }
-const addDogSuccess = function (data) {
+const addDogSuccess = function () {
   $('#message').text('Add dog')
   $('#message').css('background-color', 'green')
   $('#signOut').addClass('hidden')
@@ -79,7 +79,7 @@ const addDogSuccess = function (data) {
   $('#sign-out').removeClass('hidden')
   $('#sign-in').removeClass('hidden')
 }
-const updateDogSuccess = function (data) {
+const updateDogSuccess = function () {
   $('#message').text('Updated dog')
   $('#message').css('background-color', 'green')
   // console.log('Updated Dog')
@@ -87,9 +87,8 @@ const updateDogSuccess = function (data) {
 const searchForDogsSuccess = function (data) {
   $('.search-results').html('')
   let searchHTML = ''
-
   data.dogs.forEach((dog) => {
-    if (dog.user.id === store.user.id) {
+    // if (dog.user.id === store.user.id) {
       store.dogs.push(dog)
       searchHTML += `<div class="tmp">
       <h6>Breed: ${dog.breed}</h6>
@@ -98,15 +97,15 @@ const searchForDogsSuccess = function (data) {
       <h6>id${dog.id}</h6>
       </div>
       <BR>`
-    }
+    // }
   })
   $('.search-results').append(searchHTML)
 }
 
-const updateDogFailure = function (error) {
-  $('#message').text('Error on sign Out')
+const updateDogFailure = function () {
+  $('#message').text('This is not your dog!')
   $('#message').css('background-color', 'red')
-  console.log('updateFailure ran. Data is:', error)
+//   console.log('updateFailure ran. Data is:', error)
 }
 
 const deleteDogSuccess = function (data) {
@@ -125,8 +124,9 @@ const deleteDogSuccess = function (data) {
   $('.delete-results').append(searchHTML)
   $('#delete-dog')[0].reset()
 }
-const addDogsFailure = function (error) {
-  console.log(error)
+const addDogsFailure = function () {
+    $('#message').text('Something went wrong.')
+    $('#message').css('background-color', 'red')
 }
 
 module.exports = {

@@ -7,7 +7,7 @@ const clearTMP = () => {
   $('.search-results').children('div').remove()
 }
 const onSignUp = function (event) {
-  console.log('trying to sign up')
+//   console.log('trying to sign up')
   event.preventDefault()
   const data = getFormFields(this) // this === event.target
   api.signUp(data)
@@ -40,7 +40,7 @@ const showChangePassword = function () {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('Sign out ran!')
+//   console.log('Sign out ran!')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -71,7 +71,7 @@ const onDeleteDogs = function (event) {
 const onSearchForDogs = function (event) {
   clearTMP()
   event.preventDefault()
-  console.log('Search for Dog ran!')
+//   console.log('Search for Dog ran!')
   api.searchForDogs()
     .then(ui.searchForDogsSuccess)
     .catch(ui.searchForDogsFailure)
