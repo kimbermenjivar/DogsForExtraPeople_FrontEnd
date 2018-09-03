@@ -111,17 +111,6 @@ const updateDogFailure = function () {
 const deleteDogSuccess = function (data) {
   $('#message').text('Deleted Successfully')
   $('#message').css('background-color', 'green')
-  $('.delete-results').html('')
-  let searchHTML = ''
-  data.dogs.forEach((dog) => {
-    searchHTML += `<div>
-    <h6>Breed: ${dog.breed}</h6>
-    <h6>Size: ${dog.size}</h6>
-    <h6>Fur: ${dog.fur}</h6>
-    <h6>${dog.id}</h6>
-    </div>`
-  })
-  $('.delete-results').append(searchHTML)
   $('#delete-dog')[0].reset()
 }
 const addDogsFailure = function () {

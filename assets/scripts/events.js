@@ -50,6 +50,9 @@ const onAddDog = function (event) {
   const data = getFormFields(this) // this === event.target
   api.addDogs(data)
     .then(ui.addDogSuccess)
+    .then(() => {
+        $('#add-dog')[0].reset()
+    })
     .catch(ui.addDogsFailure)
 }
 const onUpdateDog = function (event) {
@@ -57,6 +60,9 @@ const onUpdateDog = function (event) {
   const data = getFormFields(this)
   api.updateDog(data)
     .then(ui.updateDogSuccess)
+    .then(() => {
+        $('#update-dog-form')[0].reset()
+    })
     .catch(ui.updateDogFailure)
 }
 
@@ -76,6 +82,7 @@ const onSearchForDogs = function (event) {
     .then(ui.searchForDogsSuccess)
     .catch(ui.searchForDogsFailure)
 }
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
